@@ -45,24 +45,10 @@ public class ProductDao implements ProductDaoInt {
     }
 
     @Override
-    public void save(Product product) {
+    public void saveOrUpdate(Product product) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
             session.saveOrUpdate(product);
-            session.getTransaction().commit();
-        }
-    }
-
-    @Override
-    public void update(Long id, String title) {
-        //            session.createQuery("update Product u set u.title :title where u.id = :id")
-        //                    .setParameter("title", title)
-        //                    .setParameter("id", id)
-        //                    .executeUpdate();
-        try (Session session = sessionFactoryUtils.getSession()) {
-            session.beginTransaction();
-            Product product = session.get(Product.class, id);
-            product.setTitle(title);
             session.getTransaction().commit();
         }
     }

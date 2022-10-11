@@ -11,8 +11,11 @@ public class Main {
                 System.out.println(productDao.findById(2l));
 
                 System.out.println(productDao.findAll());
-                productDao.delete(5l);
+                productDao.delete(2l);
 
+                Product p = productDao.findById(3l);
+                p.setPrice(8000);
+                productDao.saveOrUpdate(p);
 
                 System.out.println(productDao.findAll());
 

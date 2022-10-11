@@ -10,9 +10,7 @@ public interface ProductDaoInt {
 
     Product findByTitle(String title);
 
-    void save(Product product);
-
-    void update(Long id, String price);
+    void saveOrUpdate(Product product);
 
     void testCache();
 
