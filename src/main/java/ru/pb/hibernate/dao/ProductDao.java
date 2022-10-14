@@ -1,18 +1,24 @@
-package ru.pb.hibernate;
+package ru.pb.hibernate.dao;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import ru.pb.hibernate.SessionFactoryUtils;
+import ru.pb.hibernate.entity.Product;
 
 import java.util.List;
 
-public class ProductDao implements ProductDaoInt {
+@Component
+public class ProductDao {
 
+    @Autowired
     private SessionFactoryUtils sessionFactoryUtils;
 
     public ProductDao(SessionFactoryUtils sessionFactoryUtils) {
         this.sessionFactoryUtils = sessionFactoryUtils;
     }
 
-    @Override
+
     public Product findById(Long id) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -22,7 +28,7 @@ public class ProductDao implements ProductDaoInt {
         }
     }
 
-    @Override
+
     public List<Product> findAll() {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -32,7 +38,7 @@ public class ProductDao implements ProductDaoInt {
         }
     }
 
-    @Override
+
     public Product findByTitle(String name) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -44,7 +50,6 @@ public class ProductDao implements ProductDaoInt {
         }
     }
 
-    @Override
     public void saveOrUpdate(Product product) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -53,7 +58,6 @@ public class ProductDao implements ProductDaoInt {
         }
     }
 
-    @Override
     public void testCache() {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -71,7 +75,6 @@ public class ProductDao implements ProductDaoInt {
         }
     }
 
-    @Override
     public void delete(long id) {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
@@ -92,4 +95,13 @@ public class ProductDao implements ProductDaoInt {
     }
 
 
+    public boolean addProduct(long id, String title, int price) {
+        //todo: insert
+//        if (products.stream().anyMatch(p -> p.getId() == id))
+//            return false;
+//        else
+//            products.add(new Product(id, title, price));
+        return true;
+
+    }
 }

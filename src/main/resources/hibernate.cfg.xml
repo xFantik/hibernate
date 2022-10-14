@@ -13,7 +13,9 @@
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
-        <mapping class="ru.pb.hibernate.User"/>
-        <mapping class="ru.pb.hibernate.Product"/>
+        <mapping class="ru.pb.hibernate.entity.Product"/>
+        <mapping class="ru.pb.hibernate.entity.Person"/>
+        <mapping class="ru.pb.hibernate.entity.Order"/>
+
     </session-factory>
 </hibernate-configuration>
